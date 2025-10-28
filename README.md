@@ -1,6 +1,8 @@
 # Vue3-Starter
 
-演示地址DEMO: [http://vue3-demo.dr34m.cn/](http://vue3-demo.dr34m.cn/)
+# 演示地址DEMO: [http://vue3-demo.dr34m.cn/](http://vue3-demo.dr34m.cn/)
+
+# 本项目适合小微型项目迅速成型，中大型项目请绕步
 
 根目录为python后端（推荐python3.11），使用方法为
 
