@@ -1,0 +1,25 @@
+tst-*.py
+.idea/
+.hbuilderx/
+*.log
+__pycache__/
+venv/
+*.db
+*.key
+*.code
+# pyinstaller
+dist/
+build/
+
+/front/
+
+*.bin
+*.dump
+
+node_modules
+dist
+.env.local
+.env.*.local
+
+.vscode/
+package-lock.json

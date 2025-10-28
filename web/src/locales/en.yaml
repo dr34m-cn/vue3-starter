@@ -1,0 +1,57 @@
+title: Vue3 Starter
+error: Error
+retry: Retry
+home: Home
+homeTip: This page is the default jump after logging in
+network:
+  timeout: Connection timeout
+  loginExpired: Please log in
+  networkErr: Network anomaly
+  codeErr: Error code {code}
+login:
+  loginBtn: Login
+  username: Please enter your username
+  usernameLabel: Username
+  usernameRule: Please enter at least 3 characters for your username
+  passwd: Please enter your passwd
+  passwdRule: Please enter at least 6 characters for your passwd
+  notAdmin: This system is only available to super administrators
+user:
+  name: Please enter your name
+  nameLabel: Name
+  oldPasswd: Please enter your old password
+  oldPasswdLabel: Old Password
+  oldPasswdRule: Please enter at least 6 characters for your old password
+  newPasswd: Please enter your new password
+  newPasswdLabel: New Password
+  newPasswdRule: Please enter at least 6 characters for your new password
+  newPasswd2: Please enter your new password again
+  newPasswd2Label: Confirm
+  newPasswd2Rule: Please enter at least 6 characters for your new password again
+  newPasswd2Error: The two passwords do not match
+  success: Modification successful
+  save: Save
+header:
+  userinfo: personal information
+  setPwd: Change Password
+  logout: Log out
+menu:
+  home: Home
+  users: User Management
+users:
+  search: Please enter your name or username. Fuzzy search is supported.
+  no: No.
+  edit: Edit
+  resetPwd: Reset Password for {name} ({username})
+  resetPwdOnly: Reset Password
+  isEnabled: Enabled
+  enable: Enable
+  disable: Disable
+  role: Role
+  admin: Admin
+  user: User
+  superAdmin: Super Admin
+  createTime: Creation time
+  operate: Operate
+  userList: User List
+  export: Export

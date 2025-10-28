@@ -1,0 +1,57 @@
+title: Vue3 快速开发框架
+error: 加载失败
+retry: 重 试
+home: 首页
+homeTip: 本页为登陆后的默认跳转
+network:
+  timeout: 请求超时
+  loginExpired: 请登录
+  networkErr: 网络异常
+  codeErr: 错误代码 {code}
+login:
+  loginBtn: 登 录
+  username: 请输入用户名
+  usernameLabel: 用户名
+  usernameRule: 请输入至少3位用户名
+  passwd: 请输入密码
+  passwdRule: 请输入至少6位密码
+  notAdmin: 本系统仅限超级管理员登录
+user:
+  name: 请输入姓名
+  nameLabel: 姓名
+  oldPasswd: 请输入旧密码
+  oldPasswdLabel: 旧密码
+  oldPasswdRule: 请输入至少6位旧密码
+  newPasswd: 请输入新密码
+  newPasswdLabel: 新密码
+  newPasswdRule: 请输入至少6位新密码
+  newPasswd2: 请再次输入新密码
+  newPasswd2Label: 密码确认
+  newPasswd2Rule: 请再次输入至少6位新密码
+  newPasswd2Error: 两次密码不一致
+  success: 修改成功
+  save: 保存
+header:
+  userinfo: 个人信息
+  setPwd: 修改密码
+  logout: 退出登录
+menu:
+  home: 首页
+  users: 用户管理
+users:
+  search: 请输入姓名或用户名，支持模糊搜索
+  no: 序号
+  edit: 编辑
+  resetPwd: 重置 {name}（{username}） 的密码
+  resetPwdOnly: 重置密码
+  isEnabled: 是否启用
+  enable: 启用
+  disable: 禁用
+  role: 角色
+  admin: 管理员
+  user: 用户
+  superAdmin: 超级管理员
+  createTime: 创建时间
+  operate: 操作
+  userList: 用户列表
+  export: 导出

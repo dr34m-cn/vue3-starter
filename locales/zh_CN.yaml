@@ -1,0 +1,38 @@
+success: 操作成功
+error: 操作失败
+system:
+  running_success: 启动成功：{url}
+  init_sql: 初始化数据库完成
+  lost_part: 入参不全
+  same_exists: 已存在相同数据，请检查！异常信息：{}
+  empty_export: 无可导出
+log:
+  change_job: 日志定时更名任务启动成功
+  clear_job: 日志定时清理任务启动成功
+  save_all: 日志保留时间为0，将保留所有日志
+  delete_success: 日志文件{file}已被成功删除
+  delete_fail: 日志文件{file}删除失败，原因为：{error}
+login:
+  no_login: 请登录
+  expired: 登录失效，请登录
+  username_exists: 用户名已存在
+  user_not_found: 用户不存在
+  passwd_wrong: 密码错误
+  passwd_wrong_max_time: 5分钟内密码错误超过3次，请稍后再试
+permission:
+  not_enabled: 请联系超级管理员启用账户
+  cant_edit_super_admin: 不允许编辑超级管理员
+  cant_add_super_admin: 不允许新增超级管理员
+  only_super_admin: 仅限超级管理员访问
+users:
+  id: 唯一ID
+  username: 用户名
+  name: 姓名
+  isEnabled: 是否启用
+  enable: 启用
+  disable: 禁用
+  role: 角色
+  admin: 管理员
+  user: 用户
+  superAdmin: 超级管理员
+  createTime: 创建时间

@@ -1,0 +1,42 @@
+html {
+    --el-switch-border-color: #dcdfe6;
+    --app-header-background-color: rgba(255, 255, 255, 0.7);
+    --app-left-background-color: #f9f9f9;
+    --app-header-shadow-color: rgba(0, 0, 0, 0.3);
+    --border-color: #dedfe2;
+    --app-login-background-color: rgba(255, 255, 255, 0.95);
+    --background-color: #fafafa;
+    --home-background-color: #f0f2f5;
+    --home-item-background-color: #ffffff;
+    --fail-color: #F56C6C;
+    --success-color: #67C23A;
+    --changed-color: #406dff;
+    --active-color: #0052d9;
+}
+
+html.dark {
+    --el-switch-border-color: #4C4D4F;
+    --app-header-background-color: rgba(47, 65, 84, 0.7);
+    --app-left-background-color: #161718;
+    --app-header-shadow-color: rgba(0, 0, 0, 0.3);
+    --border-color: #3a3d55;
+    --app-login-background-color: rgba(16, 30, 65, 0.95);
+    --background-color: #1d1d1d;
+    --home-background-color: #121212;
+    --home-item-background-color: #1d1d1d;
+}
+
+.success-font {
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.fail-font {
+    color: var(--fail-color);
+    font-weight: bold;
+}
+
+.el-table .cell:empty::before {
+  content: "--";
+  color: #999;
+}

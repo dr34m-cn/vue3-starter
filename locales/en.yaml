@@ -1,0 +1,38 @@
+success: Success
+error: Fail
+system:
+  running_success: "running success at: {url}"
+  init_sql: Database initialization completed
+  lost_part: Incomplete participation
+  same_exists: "The same data already exists, please check! Error: {}"
+  empty_export: Nothing to export
+log:
+  change_job: The scheduled log renaming task was started successfully
+  clear_job: The scheduled log cleanup task was started successfully
+  save_all: If the log retention time is 0, all logs will be retained.
+  delete_success: Log file {file} has been successfully deleted
+  delete_fail: "Failed to delete log file {file} due to: {error}"
+login:
+  no_login: Please log in
+  expired: Login expired
+  username_exists: Username already exists
+  user_not_found: User does not exist
+  passwd_wrong: Wrong password
+  passwd_wrong_max_time: The password was incorrect more than 3 times within 5 minutes. Please try again later
+permission:
+  not_enabled: Please contact the super administrator to enable the account
+  cant_edit_super_admin: Editing super administrators is not allowed
+  cant_add_super_admin: New super administrators are not allowed
+  only_super_admin: Accessible only to super administrators
+users:
+  id: ID
+  username: Username
+  name: Name
+  isEnabled: Enabled
+  enable: Enable
+  disable: Disable
+  role: Role
+  admin: Admin
+  user: User
+  superAdmin: Super Admin
+  createTime: Creation time
