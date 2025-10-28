@@ -8,8 +8,8 @@ import { useI18n } from 'vue-i18n';
 import { User, Lock } from '@element-plus/icons-vue'
 const { t } = useI18n()
 const params = ref({
-  username: '',
-  passwd: ''
+  username: 'admin',
+  passwd: 'admin123'
 })
 const rules = ref({
   username: [{

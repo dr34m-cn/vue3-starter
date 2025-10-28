@@ -30,6 +30,7 @@ def getConfig():
             },
             # 服务器配置
             'server': {
+                'is_demo': 0,
                 'key': passwdStr,
                 'cookie_name': 'bms',
                 'cookie_expires_days': 180,

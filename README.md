@@ -1,5 +1,7 @@
 # Vue3-Starter
 
+演示地址DEMO: [http://vue3-demo.dr34m.cn/](http://vue3-demo.dr34m.cn/)
+
 根目录为python后端（推荐python3.11），使用方法为
 
 ```sh

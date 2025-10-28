@@ -2,9 +2,12 @@ import time
 from datetime import datetime
 
 from common import commonUtils
+from common.config import getConfig
 from common.locales import t
 from mapper import userMapper
 
+cfg = getConfig()
+IS_DEMO = cfg['server']['is_demo']
 
 def getUser(userId, userName=None, raiseFail=True, lang=None):
     """
@@ -68,6 +71,8 @@ def updateUserByAdmin(req):
     :param req:
     :return:
     """
+    if IS_DEMO:
+        raise Exception(t('permission.is_demo', req['__lang']))
     commonUtils.onlySuperAdmin(req)
     del req['__user']
     if req['role'] == 0 or req['role'] == '0':
@@ -86,6 +91,8 @@ def resetPwdByAdmin(req):
     :param req:
     :return:
     """
+    if IS_DEMO:
+        raise Exception(t('permission.is_demo', req['__lang']))
     commonUtils.onlySuperAdmin(req)
     del req['__user']
     user = userMapper.getUserById(req['userId'])
@@ -103,6 +110,8 @@ def addUser(username, name, passwd, lang=None):
     :param lang:
     :return:
     """
+    if IS_DEMO:
+        raise Exception(t('permission.is_demo', lang))
     username = username.strip()
     user = userMapper.getUserByName(username)
     if user:
@@ -128,6 +137,8 @@ def updateUser(req):
     :param req:
     :return:
     """
+    if IS_DEMO:
+        raise Exception(t('permission.is_demo', req['__lang']))
     user = req['__user']
     username = req['username'].strip()
     name = req['name'].strip()
@@ -168,5 +179,7 @@ def resetPasswd(userId, passwd, oldPasswd, lang=None):
     :param oldPasswd: 旧密码
     :param lang:
     """
+    if IS_DEMO:
+        raise Exception(t('permission.is_demo', lang))
     checkPwd(userId, oldPasswd, lang)
     userMapper.resetPasswd(userId, commonUtils.passwd2md5(passwd))

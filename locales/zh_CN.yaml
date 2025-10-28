@@ -24,6 +24,7 @@ permission:
   cant_edit_super_admin: 不允许编辑超级管理员
   cant_add_super_admin: 不允许新增超级管理员
   only_super_admin: 仅限超级管理员访问
+  is_demo: 演示环境禁止更改
 users:
   id: 唯一ID
   username: 用户名
