@@ -98,8 +98,9 @@ onMounted(() => {
         </Motion>
         <Motion :delay="300">
           <el-form-item>
-            <el-button :loading="loading" @click="doLogin" type="primary">{{ $t('login.loginBtn')
-            }}</el-button>
+            <el-button :loading="loading" @click="doLogin" type="primary">
+              {{ $t('login.loginBtn') }}
+            </el-button>
           </el-form-item>
         </Motion>
       </el-form>
