@@ -1,42 +1,26 @@
-import datetime
 import json
-import logging
+import sys
+
+from loguru import logger
 
 from common.config import getConfig
 from common.ecp import Ecp
 
 
 # 日志规定
-def setLogger(cusLevel=None):
+def setLogger():
     cfg = getConfig()
-    level_list = [logging.DEBUG, logging.INFO, logging.WARNING, logging.ERROR, logging.CRITICAL]
-    level_int = cfg['server']['log_level']
+    logSave = cfg['server']['log_save']
+    levelList = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+    levelInt = cfg['server']['log_level']
     consoleLevelInt = cfg['server']['console_level']
-    logger = logging.getLogger()
-    if cusLevel is None:
-        level = level_list[level_int]
-    else:
-        level = level_list[cusLevel]
-    consoleLevel = level_list[consoleLevelInt]
-    logger.setLevel(level=level)
-    log_file = 'data/log/sys_%s.log' % (datetime.datetime.strftime(datetime.datetime.now(), '%Y-%m-%d'))
-    handlersLen = len(logger.handlers)
-    if handlersLen < 2:
-        # 仅在起始是长度为1或0，之后均为2
-        if handlersLen == 1:
-            logger.removeHandler(logger.handlers[0])
-        formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-        handlerStream = logging.StreamHandler()
-        handlerStream.setLevel(consoleLevel)
-        handlerStream.setFormatter(formatter)
-        logger.addHandler(handlerStream)
-    if handlersLen > 1:
-        logger.removeHandler(logger.handlers[1])
-    handlerFile = logging.FileHandler(log_file, encoding='utf-8')
-    handlerFile.setLevel(level)
-    formatter = logging.Formatter('%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s')
-    handlerFile.setFormatter(formatter)
-    logger.addHandler(handlerFile)
+    level = levelList[levelInt]
+    consoleLevel = levelList[consoleLevelInt]
+    logger.remove()
+    logger.add(sys.stdout, level=consoleLevel, format="{time} {level} {message}")
+    logger.add("data/log/sys_{time:YYYY-MM-DD}.log", rotation="00:00",
+               retention=f"{logSave} days" if logSave != 0 else None,
+               level=level, encoding="utf-8")
 
 
 def get_post_data(self):

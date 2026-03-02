@@ -6,12 +6,6 @@ system:
   lost_part: Incomplete participation
   same_exists: "The same data already exists, please check! Error: {}"
   empty_export: Nothing to export
-log:
-  change_job: The scheduled log renaming task was started successfully
-  clear_job: The scheduled log cleanup task was started successfully
-  save_all: If the log retention time is 0, all logs will be retained.
-  delete_success: Log file {file} has been successfully deleted
-  delete_fail: "Failed to delete log file {file} due to: {error}"
 login:
   no_login: Please log in
   expired: Login expired

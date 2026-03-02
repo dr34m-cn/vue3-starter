@@ -3,7 +3,7 @@ from common import sqlBase, commonUtils
 
 @sqlBase.connect_sql
 def init_sql(conn):
-    cuVersion = 251027
+    cuVersion = 251031
     cursor = conn.cursor()
     cursor.execute("SELECT name FROM sqlite_master WHERE name='settings'")
     fec = cursor.fetchone()
@@ -24,6 +24,12 @@ def init_sql(conn):
                        "role integer DEFAULT 1,"        # 角色，0-超级管理员，1-用户，2-管理员
                        "createTime integer DEFAULT (strftime('%s', 'now'))"
                        ")")
+        cursor.execute("create table login_logs("
+                       "id integer primary key autoincrement,"
+                       "ip text,"
+                       "userAgent text,"
+                       "createTime integer DEFAULT (strftime('%s', 'now'))"
+                       ")")
         users = [{
             'username': 'admin',
             'name': 'admin',
@@ -42,8 +48,13 @@ def init_sql(conn):
         cursor.execute("select keyValue from settings where keyName='cuVersion'")
         sqlVersion = int(cursor.fetchone()[0])
         if sqlVersion < cuVersion:
-            if sqlVersion < 251027:
-                pass
+            if sqlVersion < 251031:
+                cursor.execute("create table login_logs("
+                               "id integer primary key autoincrement,"
+                               "ip text,"
+                               "userAgent text,"
+                               "createTime integer DEFAULT (strftime('%s', 'now'))"
+                               ")")
             cursor.execute(f"update settings set keyValue={cuVersion} where keyName='cuVersion'")
             conn.commit()
     cursor.close()

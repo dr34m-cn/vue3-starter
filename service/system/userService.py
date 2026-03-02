@@ -9,6 +9,7 @@ from mapper import userMapper
 cfg = getConfig()
 IS_DEMO = cfg['server']['is_demo']
 
+
 def getUser(userId, userName=None, raiseFail=True, lang=None):
     """
     通过用户名获取用户信息
@@ -183,3 +184,19 @@ def resetPasswd(userId, passwd, oldPasswd, lang=None):
         raise Exception(t('permission.is_demo', lang))
     checkPwd(userId, oldPasswd, lang)
     userMapper.resetPasswd(userId, commonUtils.passwd2md5(passwd))
+
+
+def addLog(self):
+    """
+    登录记录
+    :return:
+    """
+    remoteIp = self.request.remote_ip
+    realIp = self.request.headers.get('X-Real-IP', None)
+    forwardIp = self.request.headers.get('X-Forwarded-For', None)
+    ip = realIp or forwardIp or remoteIp
+    userAgent = self.request.headers.get('User-Agent', None)
+    userMapper.addLog({
+        'ip': ip,
+        'userAgent': userAgent
+    })

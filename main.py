@@ -1,5 +1,5 @@
 import asyncio
-import logging
+from loguru import logger
 
 from tornado.web import Application, RequestHandler, StaticFileHandler
 
@@ -27,7 +27,6 @@ def make_app():
 
 async def main():
     app = make_app()
-    logger = logging.getLogger()
     app.listen(server['port'])
     runUrl = f"http://127.0.0.1:{server['port']}/"
     logger.critical(t('system.running_success').format(url=runUrl))

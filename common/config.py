@@ -1,6 +1,7 @@
 import configparser
-import logging
 import os
+
+from loguru import logger
 
 sysConfig = None
 
@@ -45,7 +46,6 @@ def getConfig():
             }
         }
         if os.path.exists('data/config.ini'):
-            logger = logging.getLogger()
             try:
                 cfg = configparser.ConfigParser()
                 cfg.read('data/config.ini', encoding='utf-8')

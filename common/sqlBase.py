@@ -1,31 +1,27 @@
 import re
 import sqlite3
-import time
+import threading
 
 from common.config import getConfig
 from common.locales import t
 
-RUN_FLAG = False
+LOCK = threading.RLock()
 cfg = getConfig()
 
 
 def connect_sql(func):
     def wrapper(*args, **kwargs):
-        global RUN_FLAG
-        while RUN_FLAG:
-            time.sleep(0.073)
-        RUN_FLAG = True
-        conn = None
-        try:
-            conn = sqlite3.connect(cfg['db']['dbname'])
-            result = func(conn, *args, **kwargs)
-        except Exception as e:
-            raise Exception(e)
-        finally:
-            RUN_FLAG = False
-            if conn:
-                conn.close()
-        return result
+        with LOCK:
+            conn = None
+            try:
+                conn = sqlite3.connect(cfg['db']['dbname'])
+                result = func(conn, *args, **kwargs)
+                return result
+            except Exception as e:
+                raise e
+            finally:
+                if conn:
+                    conn.close()
 
     return wrapper
 
@@ -76,9 +72,19 @@ def fetchall_to_page(sql, params=None):
         sql_end += ' limit :pageSize offset :offset'
         params['offset'] = (int(pageNum) - 1) * int(pageSize)
     dataList = fetchall_to_table(sql + sql_end, params)
-    pattern = r'(SELECT\s+)(?:DISTINCT\s+)?.*?(\s+FROM)'
-    replacement = r'\1count(*)\2'
-    result = re.sub(pattern, replacement, sql, flags=re.IGNORECASE | re.DOTALL)
+    pattern = r'(?i)(SELECT\s+)(DISTINCT\s+)?(.*?)(\s+FROM)'
+
+    def replacer(match):
+        select_kw = match.group(1)
+        distinct_kw = match.group(2)
+        fields = match.group(3).strip()
+        from_kw = match.group(4)
+        if distinct_kw:
+            return f"{select_kw}count({distinct_kw}{fields}){from_kw}"
+        else:
+            return f"{select_kw}count(*){from_kw}"
+
+    result = re.sub(pattern, replacer, sql, flags=re.DOTALL)
     count = fetch_count(result, params)
     return {
         'dataList': dataList,

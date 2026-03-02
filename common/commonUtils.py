@@ -82,6 +82,14 @@ def onlySuperAdmin(req):
         raise Exception(t('permission.only_super_admin', req['__lang']))
 
 
+def dealWithSearch(params):
+    if 'search' in params:
+        if params['search'] is None or params['search'].strip() == '':
+            del params['search']
+        else:
+            params['search'] = f"%{params['search']}%"
+
+
 def exportToExcel(tableData, widthMap=None):
     """
     导出到表格

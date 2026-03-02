@@ -25,6 +25,7 @@ class Login(RequestHandler):
                                expires_days=int(cfg['server']['cookie_expires_days']))
         userReturn = user.copy()
         del userReturn['passwd']
+        userService.addLog(self)
         return userReturn
 
     @run_on_executor

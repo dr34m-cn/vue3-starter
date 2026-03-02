@@ -1,4 +1,5 @@
 from common import sqlBase
+from common.commonUtils import dealWithSearch
 
 # 用户列表，key为{user.id}，value为用户字典
 users = {}
@@ -47,11 +48,7 @@ def enableUser(userId, enable):
 
 
 def getUserList(params):
-    if 'search' in params:
-        if params['search'] is None or params['search'].strip() == '':
-            del params['search']
-        else:
-            params['search'] = f"%{params['search']}%"
+    dealWithSearch(params)
     return sqlBase.fetchall_to_page(f"select id, username, name, role, enable, createTime from user where id > 0 "
                                     f"{'and (username like :search or name like :search) ' if 'search' in params else ''}"
                                     f"{'and enable=:enable ' if 'enable' in params else ''}",
@@ -85,3 +82,7 @@ def resetPasswd(userId, passwd):
     global users
     if userId in users:
         users[userId]['passwd'] = passwd
+
+
+def addLog(logItem):
+    sqlBase.execute_insert("insert into login_logs (ip, userAgent) values (:ip, :userAgent)", logItem)

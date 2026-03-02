@@ -1,10 +1,11 @@
 import json
-import logging
+
+from loguru import logger
 
 from common import commonService
-from common.locales import t
 from common.config import getConfig
 from common.ecp import Ecp
+from common.locales import t
 from service.system import userService
 
 cfg = getConfig()
@@ -47,11 +48,9 @@ def handle_request(func):
                 msg = commonService.result_map(func(self, req))
             except Ecp as e:
                 msg = commonService.result_map(e)
-                logger = logging.getLogger()
                 logger.exception(e)
             except Exception as e:
                 msg = commonService.result_map(str(e), 500)
-                logger = logging.getLogger()
                 logger.exception(e)
         self.set_header('Content-Type', 'application/json; charset=UTF-8')
         self.write(msg)
@@ -78,12 +77,10 @@ def handle_export(func):
         except Ecp as e:
             self.set_header('Content-Type', 'application/json; charset=UTF-8')
             msg = commonService.result_map(e)
-            logger = logging.getLogger()
             logger.exception(e)
         except Exception as e:
             self.set_header('Content-Type', 'application/json; charset=UTF-8')
             msg = commonService.result_map(str(e), 500)
-            logger = logging.getLogger()
             logger.exception(e)
         self.write(msg)
 
