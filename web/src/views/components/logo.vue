@@ -12,7 +12,7 @@
 
     .logo-title {
         font-family: "Poppins", "微软雅黑", sans-serif;
-        font-size: 30px;
+        font-size: 24px;
         font-weight: bold;
         margin-left: 12px;
         background: linear-gradient(60deg,

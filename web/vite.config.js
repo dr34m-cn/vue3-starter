@@ -14,6 +14,8 @@ export default defineConfig({
     },
   },
   server: {
+    port: 18023,
+    open: true,
     proxy: {
       "/svr": {
         target: "http://127.0.0.1:8023",
